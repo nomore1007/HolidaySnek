@@ -1,11 +1,14 @@
 """Discover scene plugins from folders, without hard-coded registrations."""
 from __future__ import annotations
-import importlib.util, os, sys, tomllib
+import importlib.util, os, site, sys, tomllib
 from dataclasses import dataclass
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent / "scenes"
-PACKAGED_ROOT = Path(sys.prefix) / "share" / "holidaysnek" / "scenes"
+PACKAGED_ROOTS = [
+    Path(sys.prefix) / "share" / "holidaysnek" / "scenes",
+    Path(site.getuserbase()) / "share" / "holidaysnek" / "scenes",
+]
 
 @dataclass
 class ScenePlugin:
@@ -17,7 +20,7 @@ class ScenePlugin:
     def create(self): return self.module.Scene()
 
 def scene_roots():
-    roots = [ROOT, PACKAGED_ROOT]
+    roots = [ROOT, *PACKAGED_ROOTS]
     roots.extend(Path(p).expanduser() for p in os.environ.get("HOLIDAYSNEK_SCENES", "").split(os.pathsep) if p.strip())
     seen = set()
     for root in roots:
