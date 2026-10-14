@@ -16,3 +16,12 @@ holidaysnek = "holidaysnek.app:main"
 
 [tool.setuptools]
 packages = ["holidaysnek"]
+
+[tool.setuptools.data-files]
+"share/holidaysnek/scenes/halloween" = ["scenes/halloween/scene.py", "scenes/halloween/scene.toml"]
+"share/holidaysnek/scenes/thanksgiving" = ["scenes/thanksgiving/scene.py", "scenes/thanksgiving/scene.toml"]
+"share/holidaysnek/scenes/christmas-village" = ["scenes/christmas-village/scene.py", "scenes/christmas-village/scene.toml"]
+"share/holidaysnek/scenes/winter-cabin" = ["scenes/winter-cabin/scene.py", "scenes/winter-cabin/scene.toml"]
+"share/holidaysnek/scenes/christmas-living-room" = ["scenes/christmas-living-room/scene.py", "scenes/christmas-living-room/scene.toml"]
+"share/holidaysnek/scenes/winter-fireplace" = ["scenes/winter-fireplace/scene.py", "scenes/winter-fireplace/scene.toml"]
+"share/holidaysnek/scenes/christmas-fireplace" = ["scenes/christmas-fireplace/scene.py", "scenes/christmas-fireplace/scene.toml"]
